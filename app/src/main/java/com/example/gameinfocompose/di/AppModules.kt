@@ -1,5 +1,8 @@
 package com.example.gameinfocompose.di
 
+import com.example.gameinfocompose.domain.repository.GamesRepository
+import com.example.gameinfocompose.network.repository.GamesRepositoryImpl
+import com.example.gameinfocompose.network.service.GamesService
 import com.example.gameinfocompose.utils.Const.KEY_API
 import com.example.gameinfocompose.utils.Const.PAGE_SIZE
 import com.example.gameinfocompose.utils.Const.WEB_API
@@ -63,4 +66,5 @@ class AppModules {
         pageSize = pageSize,
         apiKey = keyApi
     )
+
 }
