@@ -24,7 +24,6 @@ class MainActivity : ComponentActivity() {
 
                     DestinationsNavHost(navGraph = NavGraphs.root)
 
-
                 }
 
             }
