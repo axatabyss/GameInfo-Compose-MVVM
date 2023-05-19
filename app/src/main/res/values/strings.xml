@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GameInfo Compose</string>
+
+    <string name="error_message">Error occurred. Please try again</string>
 </resources>
