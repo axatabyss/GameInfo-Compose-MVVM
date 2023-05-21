@@ -23,17 +23,21 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.example.gameinfocompose.R
+import com.example.gameinfocompose.ui.destinations.DetailScreenDestination
+import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 
 @OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class)
+@Destination
 @Composable
 fun ProductCard(
     modifier: Modifier = Modifier,
+    id: Int = -1,
     name: String = "",
     imageUrl: String = "",
     releaseDate: String = "",
-    navigator: DestinationsNavigator?,
+    navigator: DestinationsNavigator,
 ) {
     val imagePainter = rememberAsyncImagePainter(
         model = imageUrl,
@@ -41,6 +45,12 @@ fun ProductCard(
     )
     Card(
         onClick = {
+
+                  navigator.navigate(
+                      DetailScreenDestination(
+                          id = id
+                      )
+                  )
 
         },
     ) {
