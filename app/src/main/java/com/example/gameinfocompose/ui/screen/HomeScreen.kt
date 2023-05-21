@@ -22,6 +22,7 @@ import com.example.gameinfocompose.ui.component.ProductCard
 import com.example.gameinfocompose.viewmodel.HomeViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 
 @RootNavGraph(start = true)
@@ -29,6 +30,7 @@ import com.ramcosta.composedestinations.annotation.RootNavGraph
 @Composable
 fun HomeScreen(
     homeViewModel: HomeViewModel = hiltViewModel(),
+    navigator: DestinationsNavigator
 ) {
 
     val gamesList: LazyPagingItems<Games> = homeViewModel.gamesListState.collectAsLazyPagingItems() ?: return
@@ -45,13 +47,16 @@ fun HomeScreen(
                 val name = games?.name ?: ""
                 val imageUrl = games?.backgroundImage ?: ""
                 val releaseDate = games?.released ?: ""
-                ProductCard(
-                    modifier = Modifier.padding(8.dp),
-                    name = name,
-                    imageUrl = imageUrl,
-                    releaseDate = releaseDate,
-                    navigator = null
-                )
+                if (id != null) {
+                    ProductCard(
+                        modifier = Modifier.padding(8.dp),
+                        id = id,
+                        name = name,
+                        imageUrl = imageUrl,
+                        releaseDate = releaseDate,
+                        navigator = navigator
+                    )
+                }
             }
         }
         gamesList.apply {
